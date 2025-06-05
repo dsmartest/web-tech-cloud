@@ -1,0 +1,485 @@
+:root {
+    --color-primario: #2962FF;
+    --color-secundario: #00B0FF;
+    --color-acento: #18FFFF;
+    --color-fondo: #121212;
+    --color-superficie: #1E1E1E;
+    --color-texto: #E0E0E0;
+    --color-texto-secundario: #A0A0A0;
+    --sombra: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --sombra-neon: 0 0 10px rgba(41, 98, 255, 0.7);
+    --transicion: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body {
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    line-height: 1.7;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+    overflow-x: hidden;
+}
+
+/* Header con efecto de nube digital */
+header {
+    background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), 
+                url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    padding: 6rem 1rem;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, 
+        rgba(0, 176, 255, 0.15) 0%, 
+        transparent 70%);
+    animation: pulse 15s infinite alternate;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, var(--color-primario), var(--color-acento));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 20px rgba(41, 98, 255, 0.3);
+}
+
+header p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: var(--color-texto-secundario);
+    position: relative;
+    z-index: 1;
+}
+
+/* Navegación futurista */
+nav {
+    position: sticky;
+    top: 0;
+    background-color: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(41, 98, 255, 0.2);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    padding: 1.2rem 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 2rem;
+    position: relative;
+}
+
+nav a {
+    color: var(--color-texto);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: var(--transicion);
+    letter-spacing: 0.5px;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    color: var(--color-acento);
+}
+
+nav a.active {
+    color: var(--color-primario);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--color-acento);
+    bottom: 0;
+    left: 0;
+    transition: var(--transicion);
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+/* Contenido principal con efecto de terminal */
+main {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+section {
+    margin-bottom: 4rem;
+    padding: 2.5rem;
+    background: var(--color-superficie);
+    border-radius: 8px;
+    box-shadow: var(--sombra);
+    transition: var(--transicion);
+    border: 1px solid rgba(41, 98, 255, 0.1);
+    position: relative;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--color-primario), var(--color-acento));
+    border-radius: 8px 0 0 8px;
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-color: rgba(41, 98, 255, 0.3);
+}
+
+h2 {
+    color: var(--color-primario);
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, var(--color-primario), var(--color-acento));
+}
+
+/* Grid de servicios con efecto de tarjeta de circuito */
+.servicios-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.servicio {
+    padding: 2rem;
+    background: var(--color-superficie);
+    border-radius: 8px;
+    box-shadow: var(--sombra);
+    transition: var(--transicion);
+    text-align: center;
+    border: 1px solid rgba(41, 98, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.servicio::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, 
+        rgba(41, 98, 255, 0.1) 0%, 
+        transparent 70%);
+    opacity: 0;
+    transition: var(--transicion);
+}
+
+.servicio:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    border-color: rgba(41, 98, 255, 0.3);
+}
+
+.servicio:hover::before {
+    opacity: 1;
+}
+
+.servicio h3 {
+    color: var(--color-acento);
+    margin-bottom: 1.5rem;
+    transition: var(--transicion);
+    font-weight: 500;
+}
+
+.servicio p {
+    color: var(--color-texto-secundario);
+    line-height: 1.8;
+}
+
+.servicio i {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-primario);
+    transition: var(--transicion);
+    background: linear-gradient(to bottom, var(--color-primario), var(--color-acento));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Formulario estilo terminal */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    background: var(--color-superficie);
+    border-radius: 8px;
+    box-shadow: var(--sombra);
+    border: 1px solid rgba(41, 98, 255, 0.1);
+}
+
+label {
+    display: block;
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+    color: var(--color-acento);
+    letter-spacing: 0.5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 1.2rem;
+    background: rgba(30, 30, 30, 0.7);
+    border: 1px solid rgba(41, 98, 255, 0.3);
+    border-radius: 4px;
+    font-family: 'Roboto Mono', monospace;
+    transition: var(--transicion);
+    color: var(--color-texto);
+    font-size: 0.95rem;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-acento);
+    box-shadow: 0 0 0 3px rgba(24, 255, 255, 0.1);
+    background: rgba(30, 30, 30, 0.9);
+}
+
+button {
+    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+    color: black;
+    padding: 1.2rem 2.5rem;
+    border: none;
+    border-radius: 4px;
+    margin-top: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transicion);
+    box-shadow: 0 4px 15px rgba(41, 98, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent);
+    transition: 0.5s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(41, 98, 255, 0.4);
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+/* Footer con efecto de conexiones */
+footer {
+    background: linear-gradient(to right, #0a0a0a, #121212);
+    color: var(--color-texto);
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-top: 6rem;
+    position: relative;
+    border-top: 1px solid rgba(41, 98, 255, 0.1);
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--color-primario), 
+        var(--color-acento), 
+        transparent);
+}
+
+footer p {
+    margin-bottom: 1.5rem;
+    color: var(--color-texto-secundario);
+}
+
+.redes-sociales {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.redes-sociales a {
+    color: var(--color-texto);
+    font-size: 1.5rem;
+    transition: var(--transicion);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(41, 98, 255, 0.1);
+    border: 1px solid rgba(41, 98, 255, 0.2);
+}
+
+.redes-sociales a:hover {
+    color: var(--color-acento);
+    transform: translateY(-5px);
+    background: rgba(41, 98, 255, 0.2);
+    box-shadow: 0 0 15px rgba(41, 98, 255, 0.3);
+}
+
+/* Animaciones */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.15;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.15;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Notificación personalizada */
+.notificacion {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--sombra);
+    border-left: 4px solid var(--color-acento);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: var(--transicion);
+    z-index: 1000;
+    max-width: 300px;
+}
+
+.notificacion.mostrar {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    header p {
+        font-size: 1.2rem;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+    }
+    
+    nav ul li {
+        margin: 0.5rem 1rem;
+    }
+    
+    main {
+        padding: 0 1.5rem;
+    }
+    
+    section {
+        padding: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 4rem 1rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .servicios-container {
+        grid-template-columns: 1fr;
+    }
+    
+    form {
+        padding: 1.5rem;
+    }
+    
+    button {
+        width: 100%;
+    }
+}

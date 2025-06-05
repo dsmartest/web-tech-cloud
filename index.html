@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoCloud - Soluciones en la Nube</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>TecnoCloud Solutions</h1>
+        <p>Innovación en la nube para el futuro digital</p>
+        <div class="particles"></div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#inicio" class="active">Inicio</a></li>
+            <li><a href="#servicios">Servicios Cloud</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="inicio">
+            <h2><i class="fas fa-cloud"></i> Sobre Nosotros</h2>
+            <p>Somos especialistas en soluciones cloud computing, ayudando a empresas a migrar sus operaciones a la nube con seguridad, escalabilidad y máximo rendimiento.</p>
+            <p>Nuestro equipo de expertos en tecnología cloud trabaja con las principales plataformas: AWS, Azure y Google Cloud.</p>
+        </section>
+        
+        <section id="servicios">
+            <h2><i class="fas fa-server"></i> Nuestros Servicios Cloud</h2>
+            <div class="servicios-container">
+                <div class="servicio">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Migración a la Nube</h3>
+                    <p>Transición segura y sin problemas de tus sistemas a infraestructuras cloud.</p>
+                </div>
+                <div class="servicio">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Seguridad Cloud</h3>
+                    <p>Protección avanzada para tus datos y aplicaciones en la nube.</p>
+                </div>
+                <div class="servicio">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Arquitectura Cloud</h3>
+                    <p>Diseño de soluciones escalables y de alto rendimiento.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contacto">
+            <h2><i class="fas fa-envelope"></i> Contacto</h2>
+            <form id="formulario-contacto">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+                
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Describe tus necesidades cloud..." required></textarea>
+                
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                </button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Conéctate con nosotros en las redes sociales</p>
+        <div class="redes-sociales">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
+        <p class="copy">&copy; 2025 TecnoCloud Solutions. Todos los derechos reservados.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
