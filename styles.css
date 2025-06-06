@@ -4,11 +4,18 @@
     --color-acento: #18FFFF;
     --color-fondo: #121212;
     --color-superficie: #1E1E1E;
-    --color-texto: #E0E0E0;
-    --color-texto-secundario: #A0A0A0;
+    --color-texto: #FFFFFF;
+    --color-texto-secundario: #FFFFFF;
     --sombra: 0 4px 20px rgba(0, 0, 0, 0.3);
     --sombra-neon: 0 0 10px rgba(41, 98, 255, 0.7);
     --transicion: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -19,39 +26,93 @@ body {
     overflow-x: hidden;
 }
 
-/* Header con efecto de nube digital */
+/* Header full-width */
 header {
-    background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), 
-                url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: white;
-    padding: 6rem 1rem;
-    text-align: center;
+    width: 100vw;
     min-height: 100vh;
+    position: relative;
+    background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), 
+                url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Menú superior fijo */
+.menu-superior {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 1.5rem 0;
+    background: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(41, 98, 255, 0.2);
+}
+
+.menu-superior nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1200px;
+}
+
+.menu-superior nav ul li {
+    margin: 0 1.5rem;
+    list-style: none;
+}
+
+.menu-superior nav a {
+    color: var(--color-texto);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: var(--transicion);
+    letter-spacing: 0.5px;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.menu-superior nav a:hover {
+    color: var(--color-acento);
+}
+
+.menu-superior nav a.active {
+    color: var(--color-primario);
+}
+
+.menu-superior nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--color-acento);
+    bottom: 0;
+    left: 0;
+    transition: var(--transicion);
+}
+
+.menu-superior nav a:hover::after,
+.menu-superior nav a.active::after {
+    width: 100%;
+}
+
+/* Contenido del header */
+.contenido-header {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    overflow: hidden;
+    text-align: center;
+    padding: 0 2rem;
+    margin-top: 80px;
 }
 
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 20% 50%, 
-        rgba(0, 176, 255, 0.15) 0%, 
-        transparent 70%);
-    animation: pulse 15s infinite alternate;
-}
-
-header h1 {
+.contenido-header h1 {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     background: linear-gradient(to right, var(--color-primario), var(--color-acento));
@@ -63,7 +124,7 @@ header h1 {
     text-shadow: 0 0 20px rgba(41, 98, 255, 0.3);
 }
 
-header p {
+.contenido-header p {
     font-size: 1.5rem;
     max-width: 800px;
     margin: 0 auto 2rem;
@@ -72,65 +133,24 @@ header p {
     z-index: 1;
 }
 
-/* Navegación futurista */
-nav {
-    position: sticky;
-    top: 0;
-    background-color: rgba(30, 30, 30, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 100;
-    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(41, 98, 255, 0.2);
-}
-
-nav ul {
-    display: flex;
-    justify-content: center;
-    padding: 1.2rem 0;
-    margin: 0;
-}
-
-nav ul li {
-    margin: 0 2rem;
-    position: relative;
-}
-
-nav a {
-    color: var(--color-texto);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 0;
-    transition: var(--transicion);
-    letter-spacing: 0.5px;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-}
-
-nav a:hover {
-    color: var(--color-acento);
-}
-
-nav a.active {
-    color: var(--color-primario);
-}
-
-nav a::after {
-    content: '';
+/* Efecto de partículas */
+.particle {
     position: absolute;
-    width: 0;
-    height: 2px;
-    background: var(--color-acento);
-    bottom: 0;
-    left: 0;
-    transition: var(--transicion);
+    background: rgba(41, 98, 255, 0.3);
+    border-radius: 50%;
+    animation: float 15s infinite ease-in-out;
 }
 
-nav a:hover::after,
-nav a.active::after {
-    width: 100%;
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-20px) translateX(10px);
+    }
 }
 
-/* Contenido principal con efecto de terminal */
+/* Main content */
 main {
     max-width: 1200px;
     margin: 3rem auto;
@@ -144,7 +164,7 @@ section {
     border-radius: 8px;
     box-shadow: var(--sombra);
     transition: var(--transicion);
-    border: 1px solid rgba(41, 98, 255, 0.1);
+    border: 1px solid rgba(191, 192, 196, 0.1);
     position: relative;
 }
 
@@ -183,7 +203,7 @@ h2::after {
     background: linear-gradient(to right, var(--color-primario), var(--color-acento));
 }
 
-/* Grid de servicios con efecto de tarjeta de circuito */
+/* Servicios grid */
 .servicios-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -241,15 +261,13 @@ h2::after {
 .servicio i {
     font-size: 3rem;
     margin-bottom: 1.5rem;
-    color: var(--color-primario);
-    transition: var(--transicion);
     background: linear-gradient(to bottom, var(--color-primario), var(--color-acento));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-/* Formulario estilo terminal */
+/* Formulario */
 form {
     max-width: 600px;
     margin: 0 auto;
@@ -306,30 +324,13 @@ button {
     font-family: 'Roboto', sans-serif;
 }
 
-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.2), 
-        transparent);
-    transition: 0.5s;
-}
-
 button:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(41, 98, 255, 0.4);
+    background: linear-gradient(to right, var(--color-secundario), var(--color-primario));
 }
 
-button:hover::before {
-    left: 100%;
-}
-
-/* Footer con efecto de conexiones */
+/* Footer */
 footer {
     background: linear-gradient(to right, #0a0a0a, #121212);
     color: var(--color-texto);
@@ -387,69 +388,21 @@ footer p {
     box-shadow: 0 0 15px rgba(41, 98, 255, 0.3);
 }
 
-/* Animaciones */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 0.15;
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 0.2;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 0.15;
-    }
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-/* Notificación personalizada */
-.notificacion {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: var(--color-superficie);
-    color: var(--color-texto);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: var(--sombra);
-    border-left: 4px solid var(--color-acento);
-    transform: translateY(20px);
-    opacity: 0;
-    transition: var(--transicion);
-    z-index: 1000;
-    max-width: 300px;
-}
-
-.notificacion.mostrar {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
-    header h1 {
+    .contenido-header h1 {
         font-size: 2.5rem;
     }
     
-    header p {
+    .contenido-header p {
         font-size: 1.2rem;
     }
     
-    nav ul {
+    .menu-superior nav ul {
         flex-wrap: wrap;
     }
     
-    nav ul li {
+    .menu-superior nav ul li {
         margin: 0.5rem 1rem;
     }
     
@@ -463,11 +416,7 @@ footer p {
 }
 
 @media (max-width: 480px) {
-    header {
-        padding: 4rem 1rem;
-    }
-    
-    header h1 {
+    .contenido-header h1 {
         font-size: 2rem;
     }
     
